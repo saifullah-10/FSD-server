@@ -126,12 +126,12 @@ async function run() {
     // get user
     app.get("/user-info", async (req, res) => {
       const { id } = req.query;
-      console.log(id);
+
       try {
         const user = await users.findOne({
           _id: new ObjectId(id),
         });
-        console.log(user);
+
         return res.status(200).send(user);
       } catch (err) {
         return res.status(400).json({
@@ -140,10 +140,10 @@ async function run() {
       }
     });
 
-    await client.db("admin").command({ ping: 1 });
-    console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!"
-    );
+    // await client.db("admin").command({ ping: 1 });
+    // console.log(
+    //   "Pinged your deployment. You successfully connected to MongoDB!"
+    // );
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
